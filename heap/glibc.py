@@ -426,7 +426,10 @@ class GlibcArenas(object):
         if arena_dereference:
             ms = MallocState(arena_dereference)
         else:
-            ms = self.cur_arena
+            try:
+                ms = self.cur_arena
+            except:
+                ms = None
 
         return ms
 
