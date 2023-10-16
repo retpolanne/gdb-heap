@@ -417,7 +417,10 @@ class GlibcArenas(object):
         self.get_arenas()
 
     def get_main_arena(self):
-        return gdb.parse_and_eval("main_arena")
+        try:
+            return gdb.parse_and_eval("main_arena")
+        except:
+            return None
 
     def get_ms(self, arena_dereference=None):
         if arena_dereference:
